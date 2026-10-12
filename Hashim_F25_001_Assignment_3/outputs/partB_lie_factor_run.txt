@@ -1,0 +1,16 @@
+chart  data_effect  graphic_effect  lie_factor            verdict  ink_dimension
+    A     0.066667           5.000       75.00 exaggerates 75.00x              1
+    B     0.500000           1.250        2.50  exaggerates 2.50x              2
+    C     0.200000           0.200        1.00             honest              1
+    D     0.500000           0.125        0.25 understates (0.25)              1
+    E     3.000000          15.000        5.00  exaggerates 5.00x              2
+
+Only C is honest: zero-baseline bar lengths encode the 20% data increase exactly.
+A encodes only tips above 29.6%: ink grows 500% for a 6.667% tax increase (LF=75).
+B scales the coin in both dimensions: area grows 125% for a 50% increase (LF=2.5).
+D ink grows 12.5% for a 50% increase (LF=.25), suppressing the apparent pollution increase; an authority or polluter wishing to downplay deterioration could benefit. Intent is not known.
+E sets radius proportional to population: area grows 1500% for a 300% increase (LF=5).
+B and E require ink_dimension=2. Using 1 reports both as honest (LF=1) by ignoring squared area growth.
+F has no single Lie Factor for the alleged crossing: the formula assumes one comparable magnitude encoding and baseline for a data change. F mixes two unrelated affine coordinate mappings; the crossing is a relation between independently scaled series, not one graphic effect. A series-specific length audit would not quantify the false profit implication.
+Actual revenue exceeds cost in all months: profit = 8,12,14,17,20,25 PKR million. Profit increased 212.5% from January to June.
+Source: synthetic CDB601220 Week 3 course data; not real-world evidence.

@@ -1,0 +1,78 @@
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 10000 entries, 0 to 9999
+Data columns (total 16 columns):
+ #   Column          Non-Null Count  Dtype  
+---  ------          --------------  -----  
+ 0   patient_id      10000 non-null  object 
+ 1   admit_date      10000 non-null  object 
+ 2   ward            10000 non-null  object 
+ 3   age             10000 non-null  int64  
+ 4   sex             10000 non-null  object 
+ 5   systolic        10000 non-null  int64  
+ 6   diastolic       10000 non-null  int64  
+ 7   map_mmhg        10000 non-null  float64
+ 8   heart_rate      10000 non-null  int64  
+ 9   spo2            10000 non-null  int64  
+ 10  bmi             10000 non-null  float64
+ 11  chol_mmol_l     10000 non-null  float64
+ 12  glucose_mmol_l  10000 non-null  float64
+ 13  los_days        10000 non-null  float64
+ 14  readmitted_30d  10000 non-null  int64  
+ 15  risk_score      10000 non-null  float64
+dtypes: float64(6), int64(6), object(4)
+memory usage: 1.2+ MB
+                  count        mean         std  ...       50%       75%     max
+age             10000.0   58.113800   16.639728  ...   58.0000   69.0000   97.00
+systolic        10000.0  137.656700   22.597192  ...  128.0000  160.0000  199.00
+diastolic       10000.0   79.628200   13.134109  ...   78.0000   90.0000  125.00
+map_mmhg        10000.0   98.970690   15.830095  ...   94.3000  113.7000  149.70
+heart_rate      10000.0   78.833100   20.557021  ...   78.0000   87.0000  415.00
+spo2            10000.0   96.724000    2.239671  ...   97.0000   98.0000  100.00
+bmi             10000.0   66.177040  190.996849  ...   27.6000   31.2000  999.00
+chol_mmol_l     10000.0    4.823818    1.010410  ...    4.8200    5.5100    8.79
+glucose_mmol_l  10000.0    6.550060    1.145823  ...    6.3000    7.1000   13.90
+los_days        10000.0    2.309091    8.923347  ...    1.3800    2.5700  273.65
+readmitted_30d  10000.0    0.041100    0.198531  ...    0.0000    0.0000    1.00
+risk_score      10000.0    1.120877    1.103493  ...    0.9615    1.7241    9.00
+
+[12 rows x 8 columns]
+ward
+General Medicine    1356
+general medicine    1353
+Gen Medicine        1309
+CARDIOLOGY           914
+cardio               886
+Cardiology           882
+Day Surgery          749
+Day-Surgery          730
+Intensive Care       486
+ICU                  480
+ I.C.U               442
+icu                  413
+Name: count, dtype: int64
+['2026-01-19', '08-Mar-2026', '2026-02-26', '27/02/2026', '09/01/2026', '01-Apr-2026', '17-Apr-2026', '24-Mar-2026', '14-Apr-2026', '02-Jan-2026', '10/03/2026', '10/02/2026', '12-Apr-2026', '29/03/2026', '17-Apr-2026', '12/02/2026', '2026-03-28', '2026-02-03', '11-Apr-2026', '08/01/2026']
+                                                                                                     rule  count                                 before                                                                       after
+                                     Normalize whitespace/case and explicit ward aliases; no rows removed   6533                                     12                                                                           4
+                                      Parse ISO, day/month/year and day-abbreviated-month-year explicitly  10000                       10000 text dates                                           10000 valid datetimes; 0 failures
+                                  BMI 0 or 999 are missing-value sentinels; invalidate cells, retain rows    486                    mean 66.17704 kg/m2                                                         mean 27.34627 kg/m2
+HR >250 device faults (29) or 0 no valid resting reading (8); invalidate cells, retain other measurements     37                      mean 78.83310 bpm                                                           mean 78.04687 bpm
+                                            Exclude derived MAP from inferential heatmap; no rows removed      0 max formula rounding error 0.0333 mmHg                        9 independently recorded numeric measures in heatmap
+                      Zero-day stays retained as possible same-day stays; omit only from log-LOS box plot      2                      mean LOS 2.309091                                             positive-only mean LOS 2.309553
+                                           Retain long stays; do not hide fliers; do not impose normality      0                    LOS skewness 22.755                                                LOS median 1.380; max 273.65
+                                                SpO2 empirical bounded support; no ordinary unbounded KDE      0                               max 100%                                                       0 readings above 100%
+                                       Systolic bimodality inspected with 3,45,400 bins; use 5 mmHg width      0                      range 92-199 mmHg                                             all 10000 observations retained
+          Risk is a per-row ratio; exclude it from heatmap and do not call its mean an overall event rate      0               unweighted mean 1.120877 LOS-weighted approximation 0.654373 events/day; exact numerator unavailable
+                                             Duplicate IDs and missingness checked; no whole rows deleted      0                        duplicate IDs 0                         10000 rows retained; BMI invalid 486, HR invalid 37
+Wide LOS: 16072 cells, 6072 padding blanks omitted by melt/dropna; 10000 observations. No patient observations lost.
+Skewness (non-normality screen, not proof):
+ age               -0.012864
+systolic           0.349861
+diastolic          0.241685
+heart_rate        -0.009855
+spo2              -1.345321
+bmi                0.017401
+chol_mmol_l        0.017169
+glucose_mmol_l     1.471438
+los_days          22.755093
+dtype: float64
+Strongest non-derived pair: systolic/diastolic 0.8883991617155668 ; age/cholesterol 0.3395393773214518

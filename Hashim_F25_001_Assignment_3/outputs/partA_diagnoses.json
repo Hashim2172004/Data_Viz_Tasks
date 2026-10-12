@@ -1,0 +1,74 @@
+[
+  {
+    "case": 1,
+    "title": "Helmet grades and road exposure",
+    "conclusion": "The aggregate chart invites a claim that Premium certification is less safe.",
+    "decoy": "A truncated baseline cannot explain this: the bars start at zero. Speed alone is not the mechanism: within-road mean speeds differ only about 1-2 km/h, and Premium rates remain lower within every road type.",
+    "mechanism": "Simpson's paradox from road-type composition: 85% of Premium trips but only 3.33% of Standard trips are motorway trips. Motorway rates are 6 vs 8, arterial 2.2 vs 3, lanes 1 vs 1.395 (Premium vs Standard). Common road weights give {'Premium': 3.1, 'Standard': 4.173947368421052} injuries/1,000.",
+    "redesign": "Compare trip-weighted rates within road type, with shared zero baseline; no causal helmet-effect estimate is claimed."
+  },
+  {
+    "case": 2,
+    "title": "Counts share an enrolment denominator",
+    "conclusion": "The published chart suggests chai consumption predicts failure.",
+    "decoy": "Exam timing is a plausible first objection, but it cannot explain the dominant count trend: enrolment correlates 0.997 with cups and 0.977 with failures; exam status correlates only 0.035 with enrolment.",
+    "mechanism": "Population-size confounding: raw r=0.982, per-student r=0.293. Exam-month mean failure rates are 3.862% vs 3.415% in teaching months, so a residual association should not be erased or called zero.",
+    "redesign": "Use per-student monthly rates and separate exam months by colour and shape; these are failure events, not a proven individual causal effect."
+  },
+  {
+    "case": 3,
+    "title": "Missing monitors change the average",
+    "conclusion": "The chart invites attributing a 32% AQI improvement to the action plan.",
+    "decoy": "The baseline is zero, so truncation is ruled out. A citywide seasonal improvement is not supported by the continuously reporting panel.",
+    "mechanism": "Informative missingness / changing network composition: 6 industrial and 3 arterial stations stop reporting; 540 AQI blanks, reporting stations fall 22 to 13. Available means 202.09 to 137.21; balanced means 137.09 to 137.21, change +0.08%.",
+    "redesign": "Show raw and fixed-station trends together; do not fill missing high-pollution stations with zeros or assert full-city improvement."
+  },
+  {
+    "case": 4,
+    "title": "Equal statistics conceal the quartet",
+    "conclusion": "Equal summaries invite equal funding and identical department models.",
+    "decoy": "Small n alone is not the explanation: all departments have the same n=11, means approximately 18/14.5 and r approximately .816, yet very different geometry.",
+    "mechanism": "Insufficient summaries: one department is roughly linear, one curved, one driven by a score outlier, and Architecture has only two distinct x values (10 at one x, one high-leverage point). Removing that x-extreme leaves constant x, so Pearson r is undefined, not evidence of a stable slope.",
+    "redesign": "Plot all four departments on common axes; show fitted lines to reveal where identical fits misrepresent the observations."
+  },
+  {
+    "case": 5,
+    "title": "Moment matching preserves different shapes",
+    "conclusion": "Equal means, SDs and correlations invite treating five cohorts as interchangeable.",
+    "decoy": "Not a small-sample artifact: each cohort has n=180 and deliberately matched moments. Population rather than sample SD is the convention behind the 12/15 self-check.",
+    "mechanism": "Non-identifiability from first/second moments: all five groups have mean 48/63, SD 12/15 and r=.420 to rounding, while scatter geometry differs. Covariance is about 75.6 and slope .525 for all; neither constrains clusters, curves or gaps.",
+    "redesign": "Common-scale scatter small multiples expose the shapes without changing any row. Cohort names label the designed shapes, not automatically their final geometry after moment matching."
+  },
+  {
+    "case": 6,
+    "title": "An influential point and redundant channels",
+    "conclusion": "The heatmap invites a new physiological link between creatinine and HbA1c.",
+    "decoy": "The positive association is not mainly site confounding: the row at index 0 drives it even within Site C. An extreme value is not automatically erroneous and is retained in the primary analysis.",
+    "mechanism": "Outlier influence: r=0.765, versus -0.0036 without the 1050/15.8 observation. Other strong pairs include arithmetic/redundant channels (systolic-MAP .962). Resting-HR/VO2max has pooled r=.772 but within-device r={'DX-100': -0.41, 'DX-200': -0.404, 'DX-300': -0.495, 'DX-400': -0.631}, showing device/site mixing; probes have no calibrated interpretation. With 20 variables there are 190 distinct pairwise tests, requiring exploratory caution.",
+    "redesign": "A signed -1..1 diverging lower-triangle matrix repairs sign/scale/duplication. It cannot repair leverage, confounding or multiplicity: add raw and leave-one-out scatter, with exclusions explicit; omit uncalibrated and redundant channels from interpretation."
+  },
+  {
+    "case": 7,
+    "title": "Independent axes manufacture a crossing",
+    "conclusion": "The line positions invite saying the business lost money through April.",
+    "decoy": "Not different currencies or arithmetic errors: both columns are PKR millions; actual profits are positive in every row.",
+    "mechanism": "Incommensurable normalized positions: January revenue height (52-50)/30=.0667; cost (44-40)/16=.25. Cost is drawn higher even though 44<52. Actual profit grows from 8 to 25 million.",
+    "redesign": "Put cost and revenue on one common axis with colour plus different marker shapes."
+  },
+  {
+    "case": 8,
+    "title": "Binning changes the estimator, not the sample",
+    "conclusion": "The three panels invite three incompatible distribution stories.",
+    "decoy": "Sample-size changes and exclusions are ruled out: n=10,000 with identical min=92 and max=199 in every panel.",
+    "mechanism": "Bias/variance and quantization: width 35.67 mmHg (3 bins) merges modes; width .2675 (400 bins) is below the 1 mmHg resolution and generates artificial empty bins. Width 2.378 (45 bins) exposes the mixture with more detail.",
+    "redesign": "Use 5 mmHg equal-width bins, compare all three alternatives, and retain all observations; report two modes rather than claim normality."
+  },
+  {
+    "case": 9,
+    "title": "Kernel smoothing crosses a physical boundary",
+    "conclusion": "The curve invites believing some patients have saturation above 100%.",
+    "decoy": "No impossible source measurements: observed max is exactly 100, with zero rows above it.",
+    "mechanism": "Boundary bias from unbounded Gaussian kernels: Scott KDE bandwidth 0.3550 percentage point; integrated mass above 100 is 1.565%. The supplied 4.4% headline does not match this dataset under the specified default Scott bandwidth; the computed result is reported rather than fabricated. Simply setting cut=0 or clip=(0,100) hides the tail but does not correct the estimator or restore its integral.",
+    "redesign": "Plot empirical discrete probabilities on the bounded integer support; a truncated display of an ordinary Gaussian KDE is not a boundary correction."
+  }
+]

@@ -1,0 +1,6 @@
+chart,data_effect,graphic_effect,lie_factor,verdict,ink_dimension
+A,0.06666666666666667,5.0,75.0,exaggerates 75.00x,1
+B,0.5,1.25,2.5,exaggerates 2.50x,2
+C,0.2,0.19999999999999996,0.9999999999999998,honest,1
+D,0.5,0.125,0.25,understates (0.25),1
+E,3.0,15.0,5.0,exaggerates 5.00x,2

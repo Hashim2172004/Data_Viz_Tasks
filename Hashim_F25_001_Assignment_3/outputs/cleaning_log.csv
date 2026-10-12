@@ -1,0 +1,12 @@
+rule,count,before,after
+Normalize whitespace/case and explicit ward aliases; no rows removed,6533,12,4
+"Parse ISO, day/month/year and day-abbreviated-month-year explicitly",10000,10000 text dates,10000 valid datetimes; 0 failures
+"BMI 0 or 999 are missing-value sentinels; invalidate cells, retain rows",486,mean 66.17704 kg/m2,mean 27.34627 kg/m2
+"HR >250 device faults (29) or 0 no valid resting reading (8); invalidate cells, retain other measurements",37,mean 78.83310 bpm,mean 78.04687 bpm
+Exclude derived MAP from inferential heatmap; no rows removed,0,max formula rounding error 0.0333 mmHg,9 independently recorded numeric measures in heatmap
+Zero-day stays retained as possible same-day stays; omit only from log-LOS box plot,2,mean LOS 2.309091,positive-only mean LOS 2.309553
+Retain long stays; do not hide fliers; do not impose normality,0,LOS skewness 22.755,LOS median 1.380; max 273.65
+SpO2 empirical bounded support; no ordinary unbounded KDE,0,max 100%,0 readings above 100%
+"Systolic bimodality inspected with 3,45,400 bins; use 5 mmHg width",0,range 92-199 mmHg,all 10000 observations retained
+Risk is a per-row ratio; exclude it from heatmap and do not call its mean an overall event rate,0,unweighted mean 1.120877,LOS-weighted approximation 0.654373 events/day; exact numerator unavailable
+Duplicate IDs and missingness checked; no whole rows deleted,0,duplicate IDs 0,"10000 rows retained; BMI invalid 486, HR invalid 37"

@@ -1,0 +1,9 @@
+palette,vision,pair,delta_e,verdict
+Candidate: tab10 first four,normal,S2/S4,18.597644625857075,clear
+Candidate: tab10 first four,deutan,S3/S4,4.058729716235562,FAILS — same colour
+Candidate: tab10 first four,protan,S2/S3,0.6811767541025945,FAILS — same colour
+Candidate: tab10 first four,tritan,S1/S3,6.721179974506418,needs a second channel
+Course: three plus fourth slot,normal,S2/S4,16.41965820669021,clear
+Course: three plus fourth slot,deutan,S3/S4,7.546637952916605,needs a second channel
+Course: three plus fourth slot,protan,S1/S4,9.494498011531984,ok
+Course: three plus fourth slot,tritan,S1/S3,8.372200722672309,ok

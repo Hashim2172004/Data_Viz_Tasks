@@ -1,0 +1,16 @@
+                       palette vision  pair   delta_e                verdict
+   Candidate: tab10 first four normal S2/S4 18.597645                  clear
+   Candidate: tab10 first four deutan S3/S4  4.058730    FAILS — same colour
+   Candidate: tab10 first four protan S2/S3  0.681177    FAILS — same colour
+   Candidate: tab10 first four tritan S1/S3  6.721180 needs a second channel
+Course: three plus fourth slot normal S2/S4 16.419658                  clear
+Course: three plus fourth slot deutan S3/S4  7.546638 needs a second channel
+Course: three plus fourth slot protan S1/S4  9.494498                     ok
+Course: three plus fourth slot tritan S1/S3  8.372201                     ok
+
+Candidate: first four tab10 colours, selected for appearance without assuming safety.
+The tab10 candidate fails: deutan S3/S4 DeltaE=4.06, protan S2/S3=.68, tritan S1/S3=6.72. The overall worst is protan S2/S3; normal-vision distance does not establish accessibility.
+Course palette: the worst overall is deutan S3 (green)/S4 (purple), DeltaE=7.55. This is the course's 6-8 range: permitted only with a second channel. Protan and tritan minima exceed 8, but that does not cancel the deutan restriction.
+For more than three categories, use direct labels, separated positions, distinct markers/line styles or hatches, or small multiples. Never introduce a fourth colour as the only category identifier. Under DeltaE<6, change the palette rather than merely trusting a label.
+Simulations are severity-1.0 Machado matrices in linear RGB; distances are OKLab x100. These are the course's heuristic thresholds, not a universal clinical guarantee of readability.
+

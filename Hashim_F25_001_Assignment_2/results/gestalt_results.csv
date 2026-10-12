@@ -1,0 +1,8 @@
+panel,principle,true_groups,participant,perceived_groups,reader_explanation
+proximity,proximity,4.0,,,
+similarity,similarity,4.0,,,
+enclosure,enclosure,4.0,,,
+continuity,continuity,2.0,,,
+closure,closure,2.0,,,
+connection,connection,24.0,,,
+connection_without_lines,similarity/proximity,,,,

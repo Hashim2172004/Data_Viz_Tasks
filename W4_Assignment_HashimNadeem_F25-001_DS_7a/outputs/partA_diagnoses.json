@@ -1,0 +1,74 @@
+[
+  {
+    "case": 1,
+    "title": "Lexicographic dates",
+    "conclusion": "Orders appear to collapse annually.",
+    "decoy": "Not a truncated y-axis: both start at zero; branch is constant across all 24 rows.",
+    "mechanism": "Text order puts October–December between January and February in each year; December→February causes drops [-958.0, -978.0]. Chronological minimum monthly change is 59; first→last 4200→6405.",
+    "redesign": "Parse YYYY-M explicitly, sort DatetimeIndex and use a calendar axis."
+  },
+  {
+    "case": 2,
+    "title": "Time compression",
+    "conclusion": "A 22% endpoint rise appears to be steady quarter-wide growth.",
+    "decoy": "The endpoint arithmetic is true: 22.22%; it does not establish a regular daily trend.",
+    "mechanism": "69 observations span 90 days; 21 absent days vanish on a row-number axis. Monthly recorded totals: {Timestamp('2025-01-01 00:00:00'): 6076.0, Timestamp('2025-02-01 00:00:00'): 1650.0, Timestamp('2025-03-01 00:00:00'): 7834.0}.",
+    "redesign": "Use dates and preserve gaps; do not impute zero without verified closure records."
+  },
+  {
+    "case": 3,
+    "title": "A level summed over unequal coverage",
+    "conclusion": "Peak demand seems to jump in July.",
+    "decoy": "The axis is zero-based; bytes served is a flow, but concurrent users is a stock/level.",
+    "mechanism": "June/July daily statistics: {'wrong_sum': {6: 8782.433333333332, 7: 12543.129032258064}, 'mean_level': {6: 535.8873933624283, 7: 522.630376344086}, 'samples': {6: 16.433333333333334, 7: 24.0}}. Summing more snapshots scales with observation count, not simultaneous demand.",
+    "redesign": "Show daily mean and maximum level; report observation counts. Use sum only for bytes served."
+  },
+  {
+    "case": 4,
+    "title": "Filter phase lag",
+    "conclusion": "The checkout change appears to start working on 7 September.",
+    "decoy": "This is not evidence of a second intervention; a centered filter uses future data and cannot be deployed live.",
+    "mechanism": "Trailing minimum 2025-09-07, centered minimum 2025-08-23, lag 15 days = half-window 15.",
+    "redesign": "Retrospectively show centered mean with raw data; label trailing lag on live charts. No causal attribution from timing alone."
+  },
+  {
+    "case": 5,
+    "title": "Seasonal window selection",
+    "conclusion": "Revenue seems to be persistently deteriorating.",
+    "decoy": "The recipe explicitly starts the axis at zero; there are 36 complete months, not a seven-month source file.",
+    "mechanism": "Selected seven points fall 158.8→92.2 (-41.9%). Same-month 2025 vs 2024 changes range 5.9% to 13.3%.",
+    "redesign": "Show all 36 months and compare matching months across years; a seasonal downswing is not a long-run decline."
+  },
+  {
+    "case": 6,
+    "title": "Unequal exposure in a partial month",
+    "conclusion": "Orders appear to collapse in October.",
+    "decoy": "Monthly sum is correct for a flow and the bars start at zero; the periods are not equally complete.",
+    "mechanism": "September 10805 in 30 days (360.2/day); October 4041 in 11 days (367.4/day), extracted 2025-10-11.",
+    "redesign": "Retain zero baseline, label partial exposure, and compare per-observed-day rates instead of unequal monthly totals."
+  },
+  {
+    "case": 7,
+    "title": "Volatility transferred through a stack baseline",
+    "conclusion": "The upper envelope seems to show erratic product D.",
+    "decoy": "The stack is legal: products are exclusive, exhaustive and positive; the issue is comparison, not arithmetic.",
+    "mechanism": "Total envelope 548.3–708.7; D range 94.0–106.3, SD 3.55; lower three baseline SD 39.27.",
+    "redesign": "Keep the legal composition stack and add an unstacked D series beside it. Band thickness, not top boundary, is D."
+  },
+  {
+    "case": 8,
+    "title": "Non-exclusive denominator",
+    "conclusion": "Search appears to cause 43% of customers.",
+    "decoy": "Each reach percentage is arithmetically correct with 4,000 customers as denominator; neither rounding nor a bad axis explains the sum.",
+    "mechanism": "Shares {'touch_search': 42.62, 'touch_social': 32.3, 'touch_email': 27.48, 'touch_direct': 28.58} sum to 131.0%; 1105 customers have multiple touches. Pie area for search is 32.54%, not 42.6%.",
+    "redesign": "Separate reach bars use a common customer denominator; labels explicitly say overlap, and touching a channel is not causal attribution."
+  },
+  {
+    "case": 9,
+    "title": "Rising fraction of a shrinking denominator",
+    "conclusion": "A record share suggests premium is growing.",
+    "decoy": "The 24%→38% share is true, exclusive and meaningful for mix; it is incomplete for performance.",
+    "mechanism": "Total 1000.0→600.0; premium 240.0→228.0, a -5.0% change. Denominator shrinks faster.",
+    "redesign": "Keep the share chart and add absolute premium and total revenue on a separate shared-unit panel, never a dual axis."
+  }
+]

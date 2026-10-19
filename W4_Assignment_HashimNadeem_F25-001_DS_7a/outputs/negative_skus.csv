@@ -1,0 +1,8 @@
+category,subcategory,sku,sku_name,revenue_pkr_m,units,margin_pct,returns_pkr_m,net_revenue_pkr_m
+Mobile,Accessories,SKU-0058,ACCE-18,0.0001,1,26.6,0.0002,-0.0001
+Audio & Imaging,Drones,SKU-0233,DRON-18,0.0495,11,28.2,0.1112,-0.0617
+Audio & Imaging,Drones,SKU-0242,DRON-27,0.072,12,16.3,0.1239,-0.0519
+Lifestyle,Wearables,SKU-0272,WEAR-20,0.0882,12,23.8,0.115,-0.0268
+Lifestyle,Wearables,SKU-0299,WEAR-47,0.2311,34,15.7,0.535,-0.3039
+Lifestyle,Footwear,SKU-0335,FOOT-30,0.1368,24,30.2,0.2744,-0.1376
+Lifestyle,Footwear,SKU-0344,FOOT-39,0.3116,63,17.9,0.7989,-0.4873

@@ -1,0 +1,88 @@
+{
+  "sessions": {
+    "input_rows": 12670,
+    "slash_format_rows": 3651,
+    "raw_sessions_sum": 12010544,
+    "raw_sentinel_rows": 290,
+    "before": {
+      "dtype_ok": true,
+      "monotonic": false,
+      "n_rows": 12670,
+      "n_duplicated": 286,
+      "n_missing": 312,
+      "missing_dates": [
+        "2024-05-18 00:00:00",
+        "2024-05-18 01:00:00",
+        "2024-05-18 02:00:00",
+        "2024-05-18 03:00:00",
+        "2024-05-18 04:00:00",
+        "2024-05-18 05:00:00",
+        "2024-05-18 06:00:00",
+        "2024-05-18 07:00:00",
+        "2024-05-18 08:00:00",
+        "2024-05-18 09:00:00",
+        "2024-05-18 10:00:00",
+        "2024-05-18 11:00:00"
+      ],
+      "span": [
+        "2024-04-01 00:00:00",
+        "2025-09-11 23:00:00"
+      ],
+      "partial_tail": false,
+      "tail_period": "2025-09-11",
+      "tail_count": 24
+    },
+    "duplicate_rows_removed": 286,
+    "after_dedup_sum": 11726873,
+    "sentinels_to_nan": 287,
+    "valid_observed_sum": 11727160.0,
+    "hourly_audit": {
+      "dtype_ok": true,
+      "monotonic": true,
+      "n_rows": 12384,
+      "n_duplicated": 0,
+      "n_missing": 312,
+      "missing_dates": [
+        "2024-05-18 00:00:00",
+        "2024-05-18 01:00:00",
+        "2024-05-18 02:00:00",
+        "2024-05-18 03:00:00",
+        "2024-05-18 04:00:00",
+        "2024-05-18 05:00:00",
+        "2024-05-18 06:00:00",
+        "2024-05-18 07:00:00",
+        "2024-05-18 08:00:00",
+        "2024-05-18 09:00:00",
+        "2024-05-18 10:00:00",
+        "2024-05-18 11:00:00"
+      ],
+      "span": [
+        "2024-04-01 00:00:00",
+        "2025-09-11 23:00:00"
+      ],
+      "partial_tail": false,
+      "tail_period": "2025-09-11",
+      "tail_count": 24
+    },
+    "incomplete_days": 235,
+    "sentinel_hours_interpolated": 286,
+    "estimated_daily_totals": 221,
+    "partial_month": "2025-09-01",
+    "partial_month_hour_rows": 264,
+    "analysis_days": 518,
+    "daily_gaps": 14,
+    "daily_complete": 504,
+    "full_day_sum": 11658821.153846152,
+    "period_end": "2025-08-31"
+  },
+  "catalogue": {
+    "input_rows": 345,
+    "duplicates_removed": 1,
+    "duplicate_value": 14.8275,
+    "dedup_rows": 344,
+    "negative_rows_separated": 7,
+    "negative_net": -1.0693000000000001,
+    "positive_area_total": 1712.4508,
+    "signed_net_total": 1711.3815000000002
+  }
+}

@@ -1,0 +1,77 @@
+case01_orders_stringdate.csv before sorting: {'dtype_ok': True, 'monotonic': True, 'n_rows': 24, 'n_duplicated': 0, 'n_missing': 0, 'missing_dates': [], 'span': ('2024-01-01 00:00:00', '2025-12-01 00:00:00'), 'partial_tail': False, 'tail_period': '2025', 'tail_count': 12}
+
+CASE 1 Lexicographic dates 
+Conclusion: Orders appear to collapse annually. 
+Decoy: Not a truncated y-axis: both start at zero; branch is constant across all 24 rows. 
+Mechanism: Text order puts October–December between January and February in each year; December→February causes drops [-958.0, -978.0]. Chronological minimum monthly change is 59; first→last 4200→6405. 
+Redesign: Parse YYYY-M explicitly, sort DatetimeIndex and use a calendar axis.
+Figure(1800x720)
+case02_shop_closed.csv before sorting: {'dtype_ok': True, 'monotonic': True, 'n_rows': 69, 'n_duplicated': 0, 'n_missing': 21, 'missing_dates': ['2025-02-03 00:00:00', '2025-02-04 00:00:00', '2025-02-05 00:00:00', '2025-02-06 00:00:00', '2025-02-07 00:00:00', '2025-02-08 00:00:00', '2025-02-09 00:00:00', '2025-02-10 00:00:00', '2025-02-11 00:00:00', '2025-02-12 00:00:00', '2025-02-13 00:00:00', '2025-02-14 00:00:00'], 'span': ('2025-01-01 00:00:00', '2025-03-31 00:00:00'), 'partial_tail': False, 'tail_period': '2025-03', 'tail_count': 31}
+Trading totals by calendar month: {Timestamp('2025-01-01 00:00:00'): 6076.0, Timestamp('2025-02-01 00:00:00'): 1650.0, Timestamp('2025-03-01 00:00:00'): 7834.0}
+
+CASE 2 Time compression 
+Conclusion: A 22% endpoint rise appears to be steady quarter-wide growth. 
+Decoy: The endpoint arithmetic is true: 22.22%; it does not establish a regular daily trend. 
+Mechanism: 69 observations span 90 days; 21 absent days vanish on a row-number axis. Monthly recorded totals: {Timestamp('2025-01-01 00:00:00'): 6076.0, Timestamp('2025-02-01 00:00:00'): 1650.0, Timestamp('2025-03-01 00:00:00'): 7834.0}. 
+Redesign: Use dates and preserve gaps; do not impute zero without verified closure records.
+Figure(1800x720)
+case03_bandwidth_levels.csv before sorting: {'dtype_ok': True, 'monotonic': True, 'n_rows': 1237, 'n_duplicated': 0, 'n_missing': 227, 'missing_dates': ['2025-06-01 12:00:00', '2025-06-01 13:00:00', '2025-06-01 14:00:00', '2025-06-01 15:00:00', '2025-06-01 16:00:00', '2025-06-01 17:00:00', '2025-06-01 18:00:00', '2025-06-01 19:00:00', '2025-06-01 20:00:00', '2025-06-01 21:00:00', '2025-06-02 13:00:00', '2025-06-02 14:00:00'], 'span': ('2025-06-01 00:00:00', '2025-07-31 23:00:00'), 'partial_tail': False, 'tail_period': '2025-07-31', 'tail_count': 24}
+       wrong_sum  mean_level    samples
+ts                                     
+6    8782.433333  535.887393  16.433333
+7   12543.129032  522.630376  24.000000
+
+CASE 3 A level summed over unequal coverage 
+Conclusion: Peak demand seems to jump in July. 
+Decoy: The axis is zero-based; bytes served is a flow, but concurrent users is a stock/level. 
+Mechanism: June/July daily statistics: {'wrong_sum': {6: 8782.433333333332, 7: 12543.129032258064}, 'mean_level': {6: 535.8873933624283, 7: 522.630376344086}, 'samples': {6: 16.433333333333334, 7: 24.0}}. Summing more snapshots scales with observation count, not simultaneous demand. 
+Redesign: Show daily mean and maximum level; report observation counts. Use sum only for bytes served.
+Figure(1800x720)
+case04_intervention_lag.csv before sorting: {'dtype_ok': True, 'monotonic': True, 'n_rows': 214, 'n_duplicated': 0, 'n_missing': 0, 'missing_dates': [], 'span': ('2025-05-01 00:00:00', '2025-11-30 00:00:00'), 'partial_tail': False, 'tail_period': '2025-11', 'tail_count': 30}
+
+CASE 4 Filter phase lag 
+Conclusion: The checkout change appears to start working on 7 September. 
+Decoy: This is not evidence of a second intervention; a centered filter uses future data and cannot be deployed live. 
+Mechanism: Trailing minimum 2025-09-07, centered minimum 2025-08-23, lag 15 days = half-window 15. 
+Redesign: Retrospectively show centered mean with raw data; label trailing lag on live charts. No causal attribution from timing alone.
+Figure(1800x720)
+case05_revenue_window.csv before sorting: {'dtype_ok': True, 'monotonic': True, 'n_rows': 36, 'n_duplicated': 0, 'n_missing': 0, 'missing_dates': [], 'span': ('2023-01-01 00:00:00', '2025-12-01 00:00:00'), 'partial_tail': False, 'tail_period': '2025', 'tail_count': 12}
+
+CASE 5 Seasonal window selection 
+Conclusion: Revenue seems to be persistently deteriorating. 
+Decoy: The recipe explicitly starts the axis at zero; there are 36 complete months, not a seven-month source file. 
+Mechanism: Selected seven points fall 158.8→92.2 (-41.9%). Same-month 2025 vs 2024 changes range 5.9% to 13.3%. 
+Redesign: Show all 36 months and compare matching months across years; a seasonal downswing is not a long-run decline.
+Figure(1800x720)
+case06_monthly_partial.csv before sorting: {'dtype_ok': True, 'monotonic': True, 'n_rows': 284, 'n_duplicated': 0, 'n_missing': 0, 'missing_dates': [], 'span': ('2025-01-01 00:00:00', '2025-10-11 00:00:00'), 'partial_tail': True, 'tail_period': '2025-10', 'tail_count': 11}
+
+CASE 6 Unequal exposure in a partial month 
+Conclusion: Orders appear to collapse in October. 
+Decoy: Monthly sum is correct for a flow and the bars start at zero; the periods are not equally complete. 
+Mechanism: September 10805 in 30 days (360.2/day); October 4041 in 11 days (367.4/day), extracted 2025-10-11. 
+Redesign: Retain zero baseline, label partial exposure, and compare per-observed-day rates instead of unequal monthly totals.
+Figure(1800x720)
+case07_stacked_products.csv before sorting: {'dtype_ok': True, 'monotonic': True, 'n_rows': 36, 'n_duplicated': 0, 'n_missing': 0, 'missing_dates': [], 'span': ('2023-01-01 00:00:00', '2025-12-01 00:00:00'), 'partial_tail': False, 'tail_period': '2025', 'tail_count': 12}
+
+CASE 7 Volatility transferred through a stack baseline 
+Conclusion: The upper envelope seems to show erratic product D. 
+Decoy: The stack is legal: products are exclusive, exhaustive and positive; the issue is comparison, not arithmetic. 
+Mechanism: Total envelope 548.3–708.7; D range 94.0–106.3, SD 3.55; lower three baseline SD 39.27. 
+Redesign: Keep the legal composition stack and add an unstacked D series beside it. Band thickness, not top boundary, is D.
+Figure(1800x720)
+{'n': 4000, 'shares_pct': {'touch_search': 42.62, 'touch_social': 32.3, 'touch_email': 27.48, 'touch_direct': 28.58}, 'sum_pct': 130.98, 'exclusive': False, 'n_multi': 1105, 'pct_multi': 27.62, 'n_zero': 0}
+
+CASE 8 Non-exclusive denominator 
+Conclusion: Search appears to cause 43% of customers. 
+Decoy: Each reach percentage is arithmetically correct with 4,000 customers as denominator; neither rounding nor a bad axis explains the sum. 
+Mechanism: Shares {'touch_search': 42.62, 'touch_social': 32.3, 'touch_email': 27.48, 'touch_direct': 28.58} sum to 131.0%; 1105 customers have multiple touches. Pie area for search is 32.54%, not 42.6%. 
+Redesign: Separate reach bars use a common customer denominator; labels explicitly say overlap, and touching a channel is not causal attribution.
+Figure(1800x720)
+case09 audit {'dtype_ok': True, 'monotonic': True, 'n_rows': 8, 'n_duplicated': 0, 'n_missing': 0, 'missing_dates': [], 'span': ('2024-01-01 00:00:00', '2025-10-01 00:00:00'), 'partial_tail': False, 'tail_period': '2025', 'tail_count': 4}
+
+CASE 9 Rising fraction of a shrinking denominator 
+Conclusion: A record share suggests premium is growing. 
+Decoy: The 24%→38% share is true, exclusive and meaningful for mix; it is incomplete for performance. 
+Mechanism: Total 1000.0→600.0; premium 240.0→228.0, a -5.0% change. Denominator shrinks faster. 
+Redesign: Keep the share chart and add absolute premium and total revenue on a separate shared-unit panel, never a dual axis.
+Figure(1800x720)

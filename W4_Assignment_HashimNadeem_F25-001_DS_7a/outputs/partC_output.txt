@@ -1,0 +1,8 @@
+Touch flags: {'n': 4000, 'shares_pct': {'touch_search': 42.62, 'touch_social': 32.3, 'touch_email': 27.48, 'touch_direct': 28.58}, 'sum_pct': 130.98, 'exclusive': False, 'n_multi': 1105, 'pct_multi': 27.62, 'n_zero': 0}
+Eight category membership: {'n': 8, 'shares_pct': {'Phones': 12.5, 'Laptops': 12.5, 'Audio': 12.5, 'Wearables': 12.5, 'Cameras': 12.5, 'Drones': 12.5, 'Footwear': 12.5, 'Accessories': 12.5}, 'sum_pct': 100.0, 'exclusive': True, 'n_multi': 0, 'pct_multi': 0.0, 'n_zero': 0}
+2025Q4: {'Premium': 228.0, 'Other': 372.0} {'Premium': 38.0, 'Other': 62.0}
+VERDICTS: Touches: no pie (overlap); separate reach bars valid; neither chart proves causation. Eight shares: pie legal for mix, sorted bars preferred for exact ranking. Premium/other: pie or bars legal for revenue composition; neither alone answers absolute growth. Exclusivity of revenue partitions follows their definition, not their summing to 100 alone.
+Figure(1050x1050)
+Figure(1200x750)
+Real-reader results are pending. Run the final notebook cell interactively to collect and score them.
+Rule: I will draw a pie only for a meaningful, exhaustive whole split into exclusive nonnegative parts, when approximate composition is the question and there are few readily distinguishable slices; I will use bars for exact ranking.

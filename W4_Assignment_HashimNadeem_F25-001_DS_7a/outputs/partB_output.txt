@@ -1,0 +1,85 @@
+ window   raw_sd  smoothed_sd  variation_removed_pct  periods_lost_each_end
+      7 6820.057    4667.8459                   31.6                      3
+     28 6820.057    4448.4975                   34.8                     14
+     91 6820.057    4168.8358                   38.9                     45
+Variation removed is reduction in standard deviation, NOT variance. 7 days cancels the weekly cycle; 28 averages four weeks; 91 averages thirteen weeks and attenuates slower seasonal movement. Select 7 days for Monday monitoring.
+Toolkit caveat: its min_periods=window//2 allows partial edge windows, so reported periods_lost_each_end is nominal support loss, not actual missing output. Dashboard uses strict full windows.
+7 strict leading/trailing support losses: 3 3 missing output total incl gaps: 86
+28 strict leading/trailing support losses: 14 13 missing output total incl gaps: 298
+91 strict leading/trailing support losses: 45 45 missing output total incl gaps: 518
+Black Friday raw: 113710.0
+14-day centered mean: 33468.17857142857 median: 24780.5 EWMA span 14: 38029.4130322111
+EWMA is causal, not centered; alpha=2/15, adjust=False, ignore_na=True. Live monitoring: EWMA alongside raw spike. Retrospective typical-day quarterly summary: centered median with raw event retained. Median is not a substitute for a revenue/session total.
+Figure(1500x600)
+Decomposition-only estimated days: 14 ; boundary fill: 1
+Weekly peak-to-trough amplitude: 7528.177329011231 sessions/day; largest absolute residual: 2024-11-29 00:00:00 value: 74556.068955579
+Annual decomposition cannot be estimated: x must have 2 complete cycles requires 730 observations. x only has 518 observation(s)
+Only 518 days are available, below 730 required for two annual cycles; no annual result is fabricated. With sufficient history, repeating annual variation could move from residual into seasonal.
+Figure(1650x1050)
+31-day turning-point lag: {'window': 31, 'trailing_turn': Timestamp('2024-05-16 00:00:00'), 'centred_turn': Timestamp('2024-05-01 00:00:00'), 'lag_periods': 15, 'half_window': 15}
+The minimum is compared on the same regular calendar with strict full-window support. A live dashboard must use trailing estimates and say: 31-day trailing mean, historical smoothing delays turns by about 15 days; newest value uses no future data.
+     start        end  window_days  slope_sessions_per_day2 direction
+2024-04-01 2025-08-31            7                21.186628    rising
+2024-04-01 2025-08-31           14                21.153674    rising
+2024-04-01 2025-08-31           28                21.118666    rising
+2024-04-01 2025-08-31           56                20.911596    rising
+2024-04-01 2025-08-31           91                20.483547    rising
+2024-05-01 2025-08-31            7                19.210324    rising
+2024-05-01 2025-08-31           14                19.317471    rising
+2024-05-01 2025-08-31           28                19.277930    rising
+2024-05-01 2025-08-31           56                18.889976    rising
+2024-05-01 2025-08-31           91                18.299560    rising
+2024-06-01 2025-08-31            7                15.568648    rising
+2024-06-01 2025-08-31           14                15.658919    rising
+2024-06-01 2025-08-31           28                15.583332    rising
+2024-06-01 2025-08-31           56                15.210879    rising
+2024-06-01 2025-08-31           91                14.242614    rising
+2024-07-01 2025-08-31            7                10.816223    rising
+2024-07-01 2025-08-31           14                10.744339    rising
+2024-07-01 2025-08-31           28                10.634463    rising
+2024-07-01 2025-08-31           56                10.189608    rising
+2024-07-01 2025-08-31           91                 9.325613    rising
+2024-08-01 2025-08-31            7                 5.028776    rising
+2024-08-01 2025-08-31           14                 5.178465    rising
+2024-08-01 2025-08-31           28                 5.054725    rising
+2024-08-01 2025-08-31           56                 4.575502    rising
+2024-08-01 2025-08-31           91                 3.456981    rising
+2024-09-01 2025-08-31            7                -0.870240   falling
+2024-09-01 2025-08-31           14                -0.899014   falling
+2024-09-01 2025-08-31           28                -1.049059   falling
+2024-09-01 2025-08-31           56                -1.763033   falling
+2024-09-01 2025-08-31           91                -2.772612   falling
+2024-10-01 2025-08-31            7                -6.020220   falling
+2024-10-01 2025-08-31           14                -6.007258   falling
+2024-10-01 2025-08-31           28                -6.162319   falling
+2024-10-01 2025-08-31           56                -6.763529   falling
+2024-10-01 2025-08-31           91                -8.171811   falling
+2024-11-01 2025-08-31            7               -10.031125   falling
+2024-11-01 2025-08-31           14               -10.022990   falling
+2024-11-01 2025-08-31           28               -10.256556   falling
+2024-11-01 2025-08-31           56               -11.814815   falling
+2024-11-01 2025-08-31           91               -11.637760   falling
+2024-12-01 2025-08-31            7                -3.694326   falling
+2024-12-01 2025-08-31           14                -4.053522   falling
+2024-12-01 2025-08-31           28                -4.119856   falling
+2024-12-01 2025-08-31           56                -4.485137   falling
+2024-12-01 2025-08-31           91                -5.137899   falling
+2025-01-01 2025-08-31            7                 2.030153    rising
+2025-01-01 2025-08-31           14                 2.424073    rising
+2025-01-01 2025-08-31           28                 2.333739    rising
+2025-01-01 2025-08-31           56                 1.826843    rising
+2025-01-01 2025-08-31           91                 0.943986    rising
+2025-02-01 2025-08-31            7                12.388095    rising
+2025-02-01 2025-08-31           14                11.937057    rising
+2025-02-01 2025-08-31           28                12.144672    rising
+2025-02-01 2025-08-31           56                11.606666    rising
+2025-02-01 2025-08-31           91                 9.984563    rising
+2025-03-01 2025-08-31            7                25.539901    rising
+2025-03-01 2025-08-31           14                24.979860    rising
+2025-03-01 2025-08-31           28                24.641915    rising
+2025-03-01 2025-08-31           56                23.597121    rising
+2025-03-01 2025-08-31           91                21.446269    rising
+Direction counts: {'rising': 40, 'falling': 20}
+The brief does not specify a year, end date or fit convention; the above definition makes these 60 results reproducible. A cherry-picked interval has no unique reference effect across periods; a scalar Lie Factor would require a defensible common estimand and baseline. Report every window, dates and slopes, alongside full-history data instead.
+Banked figsize: (9.0, 2.6472706962671078) width/height: 3.3997278830196014 ; clipping in toolkit means not necessarily exactly 45 degrees.
+Figure(1350x397.091)

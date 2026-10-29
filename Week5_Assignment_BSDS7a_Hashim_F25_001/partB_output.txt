@@ -1,0 +1,20 @@
+B1: affine area range: (24.0, 650.0) pt²; diameter ratio: 5.204164998665331
+24 pt² keeps small marks visible; 650 pt² limits overlap. s, not radius, is linear in population.
+True proportional 650*population/max would give a minimum area of 1.1035653650254669 pt²; rejected for readability.
+B3: GDP under each scaling:
+minmax {'min': np.float64(0.0), 'median': np.float64(0.017371764941302027), 'max': np.float64(1.0), 'SD': np.float64(0.12718394113835402), 'below_0.1': 58}
+zscore {'min': np.float64(-0.3616324135700138), 'median': np.float64(-0.22504469042024472), 'max': np.float64(7.500995454772058), 'SD': np.float64(0.9999999999999999), 'below_0.1': 50}
+rank {'min': np.float64(0.016666666666666666), 'median': np.float64(0.5083333333333333), 'max': np.float64(1.0), 'SD': np.float64(0.28863503804144286), 'below_0.1': 5}
+PCA first two explained variance ratios: [0.67504957 0.16162832]
+Variance omitted by 2-D PCA: 0.16332211093091697
+PCA variance is not information in a causal sense; standardisation weights each variable equally.
+B4 four northernmost: ['D21', 'D22', 'D19', 'D24'] shares spherical/degrees: 0.10508767939288169 0.11082489655399287
+Largest absolute share distortion: {'code': 'D04', 'latitude': 26.071165263217157, 'sphere_km2': 95677.60699435566, 'raw_deg2': 8.617101141666353, 'sphere_share': 0.09324624396521765, 'degree_share': 0.08976147022569118, 'distortion_pp': -0.34847737395264644}
+Mercator local area inflation at south/north edges: [1.19822858 1.52786405]
+Polygon Mercator/spherical area ratios: 1.2374474245374651 1.4917008979247541
+Mercator preserves local angles but inflates area by sec(latitude)^2, not sec(latitude) as the supplied comment says; equal-area preserves visual land shares.
+B5 normal-approximate 95% funnel outliers: 1 of 40 ['U32']
+Exact discrete central Poisson funnel outliers: 1
+Random extremes can occur under the common-rate data generation; 40 pointwise checks also create multiplicity.
+Minimum integer population for 18 > upper 95% null-9 limit: 42685
+If instead requiring two non-overlapping approximate 95% intervals: 248784 per group. These are precision criteria, not a power calculation.

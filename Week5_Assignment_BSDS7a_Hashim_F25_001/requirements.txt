@@ -1,0 +1,12 @@
+numpy
+pandas
+matplotlib
+seaborn
+scipy
+scikit-learn
+jupyter
+ipykernel
+nbformat
+nbclient
+reportlab
+pillow

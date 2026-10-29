@@ -1,0 +1,5 @@
+method,800-point cluster,publish
+opaque,Visible isolated cluster; internal density saturated,No
+transparent,Visible density patch,Possible
+hexbin,Visible dense hexagons,Yes: quantitative count legend
+KDE,Visible smoothed peak,Supplement: bandwidth sensitive

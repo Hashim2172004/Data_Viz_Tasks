@@ -1,0 +1,7 @@
+Notebook format valid; all 14 code cells executed with retained outputs.
+25 chart PNGs verified; exports at 300 dpi.
+Part A PDF: 9 pages. Part E PDF: 1 page.
+All 17 original uploaded files preserved byte-for-byte.
+Python scripts pass syntax checks.
+Part C experiment pending: no fabricated participant data.
+Optional Part F not attempted.

@@ -1,0 +1,94 @@
+
+RAW FILE: district rows: 25
+code                    object
+district                object
+zone                    object
+population               int64
+households               int64
+area_km2               float64
+lon                    float64
+lat                    float64
+income_pc_usd            int64
+electrification_pct     object
+solar_kw_installed       int64
+outages                  int64
+outage_minutes           int64
+Key unique: False duplicate excess: 1
+Null counts: {'code': 0, 'district': 0, 'zone': 0, 'population': 0, 'households': 0, 'area_km2': 0, 'lon': 0, 'lat': 0, 'income_pc_usd': 0, 'electrification_pct': 3, 'solar_kw_installed': 0, 'outages': 0, 'outage_minutes': 0}
+Numeric ranges:
+      population  households  area_km2      lon      lat  income_pc_usd  solar_kw_installed  outages  outage_minutes
+min      468000         182   16745.7  66.4133  25.9456           2600               82001     3234              -1
+max    10966000     1566571   95677.6  73.5282  35.0345          10550             2620824    63237         6765079
+Sentinel counts: {'population': 0, 'households': 0, 'area_km2': 0, 'lon': 0, 'lat': 0, 'income_pc_usd': 0, 'solar_kw_installed': 0, 'outages': 0, 'outage_minutes': 2}
+
+RAW FILE: daily rows: 3061
+date               object
+zone               object
+cumulative_mwh    float64
+peak_load_mw      float64
+outage_minutes      int64
+Key unique: False duplicate excess: 15
+Null counts: {'date': 0, 'zone': 0, 'cumulative_mwh': 0, 'peak_load_mw': 0, 'outage_minutes': 0}
+Numeric ranges:
+      cumulative_mwh  peak_load_mw  outage_minutes
+min          1180.0          -1.0               0
+max      63210730.9        9917.5             512
+Sentinel counts: {'cumulative_mwh': 0, 'peak_load_mw': 46, 'outage_minutes': 0}
+
+RAW FILE: generation rows: 162
+month        object
+source       object
+subsource    object
+mwh           int64
+Key unique: True duplicate excess: 0
+Null counts: {'month': 0, 'source': 0, 'subsource': 0, 'mwh': 0}
+Numeric ranges:
+           mwh
+min    446189
+max  12105903
+Sentinel counts: {'mwh': 0}
+District calendar gaps: N/A; generation calendar gaps: 0
+Raw duplicate district records:
+ code   district zone  population  households  area_km2     lon     lat  income_pc_usd electrification_pct  solar_kw_installed  outages  outage_minutes
+ D11      Kotla   P3     4091000      616114   18868.1 72.5678 29.0466           5950                76.0              719625    31283         6422838
+ D11 Kotla City   P3     4091000      616114   18868.1 72.5678 29.0466           5950                76.0              719637    31280         6422428
+Household anomaly: [{'code': 'D21', 'population': 1081000, 'households': 182}]
+Exact duplicate excess: 12 conflicting candidate rows: 6
+      date zone  cumulative_mwh  peak_load_mw  outage_minutes
+2025-10-25   P3      12363361.7        2429.7             159
+2025-10-25   P3      12363361.7        2337.4             215
+2026-02-25   P5      12010147.6        1004.9              11
+2026-02-25   P5      12010147.6        1044.6               8
+2026-08-16   P5      15736740.2        1491.1              63
+2026-08-16   P5      15736740.2        1550.0              47
+Meter resets:
+ zone       date  cumulative_mwh  peak_load_mw  outage_minutes  interval_days  meter_change_mwh  meter_reset
+  P4 2026-02-17          1180.0        2702.4             137            1.0       -21443074.8         True
+Generation parts versus total residual MWh: {Timestamp('2025-04-01 00:00:00'): -1, Timestamp('2025-05-01 00:00:00'): -1, Timestamp('2025-06-01 00:00:00'): 0, Timestamp('2025-07-01 00:00:00'): -1, Timestamp('2025-08-01 00:00:00'): 0, Timestamp('2025-09-01 00:00:00'): 2, Timestamp('2025-10-01 00:00:00'): 0, Timestamp('2025-11-01 00:00:00'): 1, Timestamp('2025-12-01 00:00:00'): -1, Timestamp('2026-01-01 00:00:00'): -1, Timestamp('2026-02-01 00:00:00'): 0, Timestamp('2026-03-01 00:00:00'): -1, Timestamp('2026-04-01 00:00:00'): 1, Timestamp('2026-05-01 00:00:00'): 1, Timestamp('2026-06-01 00:00:00'): 1, Timestamp('2026-07-01 00:00:00'): 0, Timestamp('2026-08-01 00:00:00'): -1, Timestamp('2026-09-01 00:00:00'): -1}
+All rows / published total: 1.9999999895966813
+Calendar audit P1 {'dtype_ok': True, 'monotonic': True, 'n_rows': 517, 'n_duplicated': 0, 'n_missing': 12, 'missing_dates': ['2025-04-22 00:00:00', '2025-05-22 00:00:00', '2025-10-24 00:00:00', '2025-12-01 00:00:00', '2025-12-16 00:00:00', '2026-01-02 00:00:00', '2026-01-03 00:00:00', '2026-02-01 00:00:00', '2026-04-22 00:00:00', '2026-06-15 00:00:00', '2026-08-06 00:00:00', '2026-08-26 00:00:00'], 'span': ('2025-04-01 00:00:00', '2026-09-11 00:00:00'), 'partial_tail': True, 'tail_period': '2026-09', 'tail_count': 11}
+Missing slots P1 12
+Calendar audit P2 {'dtype_ok': True, 'monotonic': True, 'n_rows': 508, 'n_duplicated': 0, 'n_missing': 21, 'missing_dates': ['2025-04-23 00:00:00', '2025-04-26 00:00:00', '2025-05-24 00:00:00', '2025-06-05 00:00:00', '2025-06-26 00:00:00', '2025-07-02 00:00:00', '2025-07-17 00:00:00', '2025-07-26 00:00:00', '2025-10-17 00:00:00', '2025-10-28 00:00:00', '2025-11-27 00:00:00', '2025-12-24 00:00:00'], 'span': ('2025-04-01 00:00:00', '2026-09-11 00:00:00'), 'partial_tail': True, 'tail_period': '2026-09', 'tail_count': 11}
+Missing slots P2 21
+Calendar audit P3 {'dtype_ok': True, 'monotonic': True, 'n_rows': 514, 'n_duplicated': 0, 'n_missing': 15, 'missing_dates': ['2025-06-07 00:00:00', '2025-06-13 00:00:00', '2025-06-18 00:00:00', '2025-09-26 00:00:00', '2025-10-30 00:00:00', '2025-11-15 00:00:00', '2026-01-18 00:00:00', '2026-02-13 00:00:00', '2026-03-19 00:00:00', '2026-03-20 00:00:00', '2026-05-19 00:00:00', '2026-05-28 00:00:00'], 'span': ('2025-04-01 00:00:00', '2026-09-11 00:00:00'), 'partial_tail': True, 'tail_period': '2026-09', 'tail_count': 11}
+Missing slots P3 15
+Calendar audit P4 {'dtype_ok': True, 'monotonic': True, 'n_rows': 505, 'n_duplicated': 0, 'n_missing': 24, 'missing_dates': ['2025-04-04 00:00:00', '2025-04-22 00:00:00', '2025-05-12 00:00:00', '2025-05-21 00:00:00', '2025-05-27 00:00:00', '2025-05-30 00:00:00', '2025-06-03 00:00:00', '2025-06-13 00:00:00', '2025-07-01 00:00:00', '2025-08-11 00:00:00', '2025-08-15 00:00:00', '2025-09-05 00:00:00'], 'span': ('2025-04-01 00:00:00', '2026-09-11 00:00:00'), 'partial_tail': True, 'tail_period': '2026-09', 'tail_count': 11}
+Missing slots P4 24
+Calendar audit P5 {'dtype_ok': True, 'monotonic': True, 'n_rows': 493, 'n_duplicated': 0, 'n_missing': 36, 'missing_dates': ['2025-05-01 00:00:00', '2025-05-10 00:00:00', '2025-05-25 00:00:00', '2025-05-31 00:00:00', '2025-06-21 00:00:00', '2025-07-06 00:00:00', '2025-07-22 00:00:00', '2025-07-27 00:00:00', '2025-07-28 00:00:00', '2025-09-23 00:00:00', '2025-11-15 00:00:00', '2025-12-19 00:00:00'], 'span': ('2025-04-01 00:00:00', '2026-09-11 00:00:00'), 'partial_tail': True, 'tail_period': '2026-09', 'tail_count': 11}
+Missing slots P5 36
+Calendar audit P6 {'dtype_ok': True, 'monotonic': True, 'n_rows': 509, 'n_duplicated': 0, 'n_missing': 20, 'missing_dates': ['2025-04-04 00:00:00', '2025-04-06 00:00:00', '2025-04-15 00:00:00', '2025-05-11 00:00:00', '2025-05-15 00:00:00', '2025-06-21 00:00:00', '2025-08-30 00:00:00', '2025-09-08 00:00:00', '2025-09-19 00:00:00', '2025-11-03 00:00:00', '2025-11-22 00:00:00', '2025-12-07 00:00:00'], 'span': ('2025-04-01 00:00:00', '2026-09-11 00:00:00'), 'partial_tail': True, 'tail_period': '2026-09', 'tail_count': 11}
+Missing slots P6 20
+GeoJSON features: 24 unique codes: True join matched: 24 unmatched district/geometry: 0 0
+Daily zone join misses: 0
+Denominator ranges: households 76721 1566571 outages 3234 63237 monthly total MWh 9228210 12105903
+Clean district ranges:
+      population  households  area_km2      lon      lat  income_pc_usd  electrification_pct  solar_kw_installed  outages  outage_minutes  interruptions_per_1000_households  mean_interruption_minutes
+min      468000       76721   16745.7  66.4133  25.9456           2600                 66.6               82001     3234        418641.0                          30.426276                  77.353262
+max    10966000     1566571   95677.6  73.5282  35.0345          10550                 90.3             2620824    63237       6765079.0                          50.874826                 213.741195
+P1 June endpoint energy: 1199206.6999999993 naive sum: 574845315.3000001 inflation: 479.3546561239196
+r(count, households): 0.9912696575727908 r(rate, households): 0.17533878965976094
+Pooled rate: 43.65252019641439
+Top five population shares land, people: 0.12593402078172483 0.5988039476640683
+ANCHOR DISCREPANCY: supplied 1,200,239 MWh differs by 1,032.3 MWh from endpoint energy 1,199,206.7; do not force the data to match.
+
+All reproducible data assertions passed; one published energy anchor discrepancy recorded.

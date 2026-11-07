@@ -1,0 +1,14 @@
+deutan simulation
+  #0072B2  ->  #3B67B1
+  #D55E00  ->  #9E8C00
+protan simulation
+  #0072B2  ->  #5375B5
+  #D55E00  ->  #817100
+tritan simulation
+  #0072B2  ->  #008289
+  #D55E00  ->  #EB4050
+Worst pair None (1, 2, '#0072B2', '#D55E00', 31.177536034667014)
+Worst pair deutan (1, 2, '#0072B2', '#D55E00', 28.108415729861314)
+Worst pair protan (1, 2, '#0072B2', '#D55E00', 21.890771087529153)
+Worst pair tritan (1, 2, '#0072B2', '#D55E00', 30.97920323708007)
+Identity also encoded with explicit labels, markers, or hatching.
